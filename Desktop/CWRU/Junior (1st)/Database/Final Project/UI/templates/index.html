@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<HTML>
+<head lang="en">
+    <meta charset="utf-8">
+    <title> Medical Treatment Process </title>
+    <style>
+    .center {
+        padding-top: 15%;
+        margin: auto;
+        width: 50%;
+
+      }
+
+    input[type=submit]{
+        background-color: rgba(rgb(0, 0, 0, 0.5);
+        color: white;
+   }
+    </style>
+</head>
+<body style="background-image: url({{url_for('static', filename='1.jpg') }});">
+        <div class="center">
+        <center><h1 style="color: white;" style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Medical Treatment Process</h1></center>
+        <p style="color: white;" style="font-family:Verdana, Geneva, Tahoma, sans-serif;"">Welcome to the Medical Treatment Process's internal portal! This page allows you to search for a patient's 
+            prescription information and diagnosis information by specifying their patient id in the following box.
+        </p><br>
+        <center><p style="color: white;" style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Please Enter the Patient's ID: </p></center>
+        <form action="{{ url_for('search') }}" method="POST">
+            <center><input type="text" name="id">  <input type="submit" value="search"><center>
+        </form>
+        </div>
+    </body>
+</HTML>

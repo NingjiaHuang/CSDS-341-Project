@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    body {
+        background-color: #dcedf1;
+    }
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+    
+    li {
+        float: left;
+    }
+    
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+    
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+    
+    .active {
+        background-color: #4CAF50;
+    }
+
+    table, th, td {
+        font-size: 15px;
+        border-spacing: 6cm, 2em
+    }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="/">Home</a>
+        <li><a href="{{ url_for('profile', id=id) }}">Profile</a>
+        <li><a href="{{ url_for('diagnosis', id=id) }}">Diagnosis</a>
+        <li><a href="">Prescription</a>
+    </ul>
+    <div>
+        {% if pre == [] %}
+            <h3>No prescription</h3>
+        {% else %}
+            <table>
+                <thead>
+                <td>Prescription ID</td>
+                <td>Doctor name</td>
+                <td>Prescription name</td>
+                <td>Quantity</td>
+                <td>Price</td>
+                </thead>
+                {% for row in pre %}
+                <tr>
+                    <td>{{row["pre_id"]}}</td>
+                    <td>{{row["dname"]}}</td>
+                    <td> {{row["pre_name"]}}</td>
+                    <td>{{row['quantity']}}</td>	
+                    <td>{{row['price']}}</td>	
+                </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+      </div>
+</body>
+</html>

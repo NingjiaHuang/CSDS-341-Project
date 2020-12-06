@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <style>
+    body {
+        background-color: #dcedf1;
+    }
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+    
+    li {
+        float: left;
+    }
+    
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+    
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+    
+    .active {
+        background-color: #4CAF50;
+    }
+
+    table, th, td {
+        font-size: 15px;
+        border-spacing: 6cm, 2em
+    }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="/">Home</a>
+        <li><a href="{{ url_for('profile', id=id) }}">Profile</a>
+        <li><a >Diagnosis</a>
+        <li><a href="{{ url_for('prescription', id=id) }}">Prescription</a>
+     </ul>
+    <div>
+        {% if diag == [] %}
+            <h3>No diagnosis</h3>
+        
+        {% else %}
+            <table>
+                <thead>
+                <td>Diagnosis ID</td>
+                    <td>Doctor name</td>
+                    <td>Pathology</td>
+                    <td>Symptoms</td>
+                    <td>Treatment</td>
+                </thead>
+                    
+                {% for row in diag %}
+                    <tr>
+                        <td>{{row["diag_id"]}}</td>
+                        <td>{{row["dname"]}}</td>
+                        <td> {{row["pathology"]}}</td>
+                        <td>{{row['symptoms']}}</td>	
+                        <td>{{row['treatment']}}</td>	
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </div>
+</body>
+</html>

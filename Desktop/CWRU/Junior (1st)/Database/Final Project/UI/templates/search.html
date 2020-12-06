@@ -1,0 +1,81 @@
+<!Doctype html>
+<html>
+<head>
+   <style>
+   body {
+        background-color: #dcedf1;
+   }
+   ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+   }
+   
+   li {
+      float: left;
+   }
+
+   .center {
+      margin-left: auto;
+      margin-right: auto;
+   }
+
+   li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+   }
+   
+   li a:hover:not(.active) {
+      background-color: #111;
+   }
+   
+   .active {
+      background-color: #4CAF50;
+   }
+   table, tr, td {
+      border-spacing: 1cm 2em
+    }
+   </style>
+</head>
+<body>
+   <ul>
+      <li><a href="/">Home</a>
+      <li><a>Profile</a>
+      <li><a href="{{ url_for('diagnosis', id=id) }}">Diagnosis</a>
+      <li><a href="{{ url_for('prescription', id=id) }}">Prescription</a>
+   </ul>
+      <table class="center" style="padding-top: 0%;">
+      {% for row in profile %}
+         <tr>
+            <td>Name</td> <td>{{row["pname"]}}</td>
+         </tr>
+         <tr>
+            <td>Gender</td> <td>{{row["pgender"]}}</td>
+         </tr>
+         <tr>
+            <td>Birthday</td> <td> {{row["p_bday"]}}</td>
+         </tr>
+         <tr>
+            <td>Phone</td> <td>{{row['pphone']}}</td>	
+         </tr>
+         <tr>
+            <td>Address</td> <td>{{row['paddress']}}</td>
+         </tr>
+         <tr>
+            <td>Date Admitted</td> <td>{{row['date_admitted']}}</td>
+         </tr>
+         <tr>
+            <td>Insurance ID</td> <td>{{row['insurance_id']}}</td>
+         </tr>
+         <tr>
+            <td>Insurance Plan</td> <td>{{row['insurance_plan']}}</td>
+         </tr>
+      {% endfor %}
+      </table>
+   </body>
+</html>
